@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>АЛТАЙСОЮЗ — поставки мяса (Комсомольск-на-Амуре)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="АЛТАЙСОЮЗ — оптово-розничные поставки мяса. Крупнейший поставщик для заводов, фабрик, ресторанов, кафе и магазинов Комсомольска-на-Амуре.">
+  <style>
+    :root{
+      --ink:#0e1116;
+      --bg:#0b0f14;
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-brd: rgba(255,255,255,0.14);
+      --accent:#7b1023;
+      --accent-2:#a0162e;
+      --muted:#c9cdd2;
+      --ring:#ffffffaa;
+    }
+    html,body{margin:0;padding:0;background:radial-gradient(1200px 800px at 20% 10%, #121722 0%, #0b0f14 60%, #070a0f 100%);color:#eef1f5;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    *,*:before,*:after{box-sizing:border-box}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:1200px;margin:0 auto;padding:20px}
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(to bottom, rgba(7,10,15,.9), rgba(7,10,15,.6) 60%, transparent)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
+    .brand-logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 6px 22px rgba(0,0,0,.35)}
+    .menu{display:flex;gap:16px;flex-wrap:wrap}
+    .menu a{opacity:.9}
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{padding:12px 16px;border-radius:14px;border:1px solid var(--glass-brd);background:var(--glass-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.2s}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-accent{background:linear-gradient(135deg,var(--accent),var(--accent-2));border-color:transparent}
+    .btn-accent:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+    .btn-ghost{background:transparent;border-color:var(--glass-brd)}
+    .hero{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:28px 0 10px}
+    .hero-card{padding:24px;border:1px solid var(--glass-brd);background:var(--glass-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:24px;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+    h1{font-size:clamp(28px,4.2vw,44px);margin:0 0 10px}
+    .lead{color:#e6e9ee;opacity:.9;line-height:1.55;margin:0 0 18px}
+    .grid{display:grid;gap:18px}
+    .cols-3{grid-template-columns:repeat(3,1fr)}
+    .cols-2{grid-template-columns:repeat(2,1fr)}
+    .card{padding:18px;border:1px solid var(--glass-brd);background:var(--glass-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .section{padding:28px 0}
+    h2{font-size:clamp(22px,3.2vw,30px);margin:0 0 14px}
+    h3{margin:0 0 10px}
+    .muted{color:var(--muted);opacity:.85}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{padding:8px 10px;font-size:14px;border-radius:999px;border:1px solid var(--glass-brd);background:var(--glass-bg);backdrop-filter:blur(12px)}
+    .list{padding-left:18px;margin:8px 0}
+    .list li{margin:6px 0}
+    .assort{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+    .assort .card>div{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .assort small{opacity:.8}
+    /* Таблица прайса */
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    .toolbar input,.toolbar select{background:#1b2230;border:1px solid #2d3547;color:#e9eef6;border-radius:12px;padding:10px 12px}
+    table{width:100%;border-collapse:separate;border-spacing:0 8px}
+    thead th{text-align:left;font-weight:700;padding:8px 10px}
+    tbody tr{background:var(--glass-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--glass-brd)}
+    tbody td{padding:10px;border-top:1px solid var(--glass-brd);border-bottom:1px solid var(--glass-brd)}
+    tbody tr td:first-child{border-left:1px solid var(--glass-brd);border-top-left-radius:12px;border-bottom-left-radius:12px}
+    tbody tr td:last-child{border-right:1px solid var(--glass-brd);border-top-right-radius:12px;border-bottom-right-radius:12px;text-align:right;white-space:nowrap}
+    .table-wrap{overflow:auto;padding-bottom:6px}
+    /* Контакты */
+    .contact-grid{display:grid;gap:16px;grid-template-columns:1fr}
+    .contact-item{display:flex;gap:10px;align-items:flex-start}
+    .kv{color:#aab3c0}
+    footer{padding:30px 0;color:#b5bdc9;opacity:.9}
+    /* Адаптив */
+    @media (min-width:700px){
+      .hero{grid-template-columns:1.1fr .9fr}
+      .assort{grid-template-columns:repeat(4,1fr)}
+      .contact-grid{grid-template-columns:1.2fr .8fr}
+    }
+    /* Фоллбек для пользователей с ограниченной прозрачностью */
+    @media (prefers-reduced-transparency: reduce){
+      .btn,.card,.hero-card{background:#151a22!important;border-color:#2a3342!important;backdrop-filter:none!important}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div>АЛТАЙСОЮЗ</div>
+      </div>
+      <nav class="menu" aria-label="Основная навигация">
+        <a href="#about">О компании</a>
+        <a href="#assort">Ассортимент</a>
+        <a href="#price">Прайс</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <div class="cta">
+        <a class="btn btn-ghost" href="tel:+79243005707" aria-label="Позвонить">Позвонить</a>
+        <a class="btn btn-accent" href="https://wa.me/79243005707" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div class="hero-card">
+        <h1>Оптово-розничные поставки мяса для бизнеса</h1>
+        <p class="lead">Крупнейший поставщик для заводов, фабрик, ресторанов, кафе и магазинов в Комсомольске-на-Амуре. Надёжно. Быстро. С документами.</p>
+        <div class="badges" style="margin-bottom:14px">
+          <span class="badge">Охлаждённое и замороженное</span>
+          <span class="badge">Холодовая цепь</span>
+          <span class="badge">Индивидуальные условия</span>
+        </div>
+        <div class="cta">
+          <a class="btn btn-accent" href="#price">Смотреть прайс</a>
+          <a class="btn" href="#contacts">Связаться</a>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Почему мы</h3>
+          <ul class="list">
+            <li>Стабильные поставки, собственная логистика</li>
+            <li>Гибкая ценовая политика для опта и розницы</li>
+            <li>Сертификаты и ветконтроль на каждую партию</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Сегменты</h3>
+          <p class="muted">Заводы, фабрики, рестораны, кафе, магазины, кейтеринг, HoReCa</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="wrap section">
+      <h2>О компании «АЛТАЙСОЮЗ»</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Надёжность</h3>
+          <p class="muted">Долгосрочные отношения с поставщиками и клиентами. Строгое соблюдение температурных режимов.</p>
+        </div>
+        <div class="card">
+          <h3>Качество</h3>
+          <p class="muted">Сертификаты, ветеринарный контроль, прозрачная документация по каждой позиции.</p>
+        </div>
+        <div class="card">
+          <h3>Гибкие условия</h3>
+          <p class="muted">Индивидуальные цены для крупных клиентов, оперативные отгрузки, удобные способы оплаты.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="assort" class="wrap section">
+      <h2>Ассортимент</h2>
+      <div class="assort">
+        <div class="card"><div><strong>Говядина</strong><small>охлажд./замор.</small></div></div>
+        <div class="card"><div><strong>Свинина</strong><small>охлажд./замор.</small></div></div>
+        <div class="card"><div><strong>Баранина</strong><small>охлажд./замор.</small></div></div>
+        <div class="card"><div><strong>Птица</strong><small>курица, индейка</small></div></div>
+        <div class="card"><div><strong>Субпродукты</strong><small>печень, сердце и др.</small></div></div>
+        <div class="card"><div><strong>Фарш/полуфабрикаты</strong><small>по запросу</small></div></div>
+        <div class="card"><div><strong>Упаковка</strong><small>пром. и розн.</small></div></div>
+        <div class="card"><div><strong>Доставка</strong><small>рефрижераторы</small></div></div>
+      </div>
+    </section>
+
+    <section id="price" class="wrap section">
+      <h2>Прайс</h2>
+      <p class="muted" style="margin-top:-6px">Ищите и фильтруйте позиции. Можно загрузить ваш XLSX или работать с примером ниже.</p>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="toolbar">
+          <input id="q" type="search" placeholder="Поиск по названию…" aria-label="Поиск">
+          <select id="cat" aria-label="Категория">
+            <option value="">Все категории</option>
+          </select>
+          <button class="btn" id="reset">Сбросить</button>
+          <label class="btn" for="file">Загрузить XLSX</label>
+          <input id="file" type="file" accept=".xlsx,.xls" style="display:none">
+        </div>
+        <div class="table-wrap">
+          <table aria-describedby="price-table">
+            <thead>
+              <tr>
+                <th>Категория</th>
+                <th>Наименование</th>
+                <th>Ед.</th>
+                <th>Примечание</th>
+                <th>Цена</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+      <small class="muted">Подсказка: для корректной загрузки вашего файла требуется интернет (CDN SheetJS).</small>
+    </section>
+
+    <section id="contacts" class="wrap section">
+      <h2>Контакты</h2>
+      <div class="contact-grid">
+        <div class="card">
+          <div class="contact-item"><div class="kv">Телефон:</div><div><a href="tel:+79243005707">+7 924 300-57-07</a></div></div>
+          <div class="contact-item"><div class="kv">WhatsApp:</div><div><a href="https://wa.me/79243005707" target="_blank" rel="noopener">Написать в WhatsApp</a></div></div>
+          <div class="contact-item"><div class="kv">Email:</div><div><a href="mailto:altaisoyz2020@mail.ru">altaisoyz2020@mail.ru</a></div></div>
+          <div class="contact-item"><div class="kv">Адрес:</div><div>681000, Хабаровский край, г. Комсомольск-на-Амуре, ул. Вокзальная, стр. 10, соор. 12</div></div>
+          <div class="contact-item"><div class="kv">Время работы:</div><div>пн-пт 9:00–18:00</div></div>
+          <div class="cta" style="margin-top:8px">
+            <a class="btn btn-ghost" href="tel:+79243005707">Позвонить</a>
+            <a class="btn btn-accent" href="https://wa.me/79243005707" target="_blank" rel="noopener">Написать в WhatsApp</a>
+          </div>
+        </div>
+        <div class="card" aria-label="Карта">
+          <h3>Как нас найти</h3>
+          <p class="muted">Офис/склад: ул. Вокзальная, стр. 10, соор. 12</p>
+          <iframe title="Карта (Google)" style="width:100%;height:260px;border:0;border-radius:12px"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Комсомольск-на-Амуре,ул.+Вокзальная,+10&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="grid cols-2">
+        <div>© <span id="year"></span> АЛТАЙСОЮЗ. Все права защищены.</div>
+        <div style="text-align:right">Политика конфиденциальности · Пользовательское соглашение</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SheetJS для XLSX (CDN). Если офлайн — пример всё равно работает. -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
+  <script>
+    // ====== Утилиты ======
+    const formatRub = n => (n===null || n===undefined || n==='') ? '—' :
+      new Intl.NumberFormat('ru-RU', {style:'currency', currency:'RUB', maximumFractionDigits:0}).format(Number(n));
+
+    // ====== Пример данных (работает сразу) ======
+    let data = [
+      {category:'Говядина', name:'Лопатка без кости', unit:'кг', note:'охлажденная', price:489},
+      {category:'Говядина', name:'Грудинка', unit:'кг', note:'замороженная', price:359},
+      {category:'Свинина',  name:'Окорок б/к', unit:'кг', note:'охлажденная', price:329},
+      {category:'Свинина',  name:'Шея', unit:'кг', note:'охлажденная', price:419},
+      {category:'Птица',    name:'Куриное филе', unit:'кг', note:'охлажденное', price:289},
+      {category:'Птица',    name:'Бедро', unit:'кг', note:'замороженное', price:219},
+      {category:'Субпродукты', name:'Печень говяжья', unit:'кг', note:'', price:189},
+      {category:'Баранина', name:'Лопатка', unit:'кг', note:'', price:579},
+    ];
+
+    // ====== Рендер ======
+    const tbody = document.getElementById('tbody');
+    const q = document.getElementById('q');
+    const cat = document.getElementById('cat');
+    const resetBtn = document.getElementById('reset');
+    const fileInput = document.getElementById('file');
+
+    function populateCats(arr){
+      const cats = Array.from(new Set(arr.map(x=>x.category).filter(Boolean))).sort();
+      cat.innerHTML = '<option value="">Все категории</option>' + cats.map(c=>`<option>${c}</option>`).join('');
+    }
+
+    function render(){
+      const term = q.value.trim().toLowerCase();
+      const c = cat.value;
+      const rows = data.filter(x=>{
+        const byCat = !c || x.category===c;
+        const byTerm = !term || (x.name.toLowerCase().includes(term) || (x.note||'').toLowerCase().includes(term));
+        return byCat && byTerm;
+      });
+      tbody.innerHTML = rows.map(x=>`
+        <tr>
+          <td>${x.category||'—'}</td>
+          <td>${x.name||'—'}</td>
+          <td>${x.unit||'—'}</td>
+          <td>${x.note||'—'}</td>
+          <td>${formatRub(x.price)}</td>
+        </tr>
+      `).join('') || `<tr><td colspan="5" style="text-align:center;padding:16px" class="muted">Ничего не найдено</td></tr>`;
+    }
+
+    // ====== Загрузка XLSX ======
+    fileInput.addEventListener('change', async (e)=>{
+      const f = e.target.files?.[0];
+      if(!f) return;
+      // Проверяем наличие SheetJS
+      if(typeof XLSX==='undefined'){
+        alert('Для загрузки XLSX нужен интернет (CDN SheetJS). Пока используйте встроенный пример.');
+        fileInput.value = '';
+        return;
+      }
+      const buf = await f.arrayBuffer();
+      const wb = XLSX.read(buf, {type:'array'});
+      const ws = wb.Sheets[wb.SheetNames[0]];
+      const json = XLSX.utils.sheet_to_json(ws, {defval:'', raw:false});
+      // Ожидаем колонки: category, name, unit, price, note (в любом регистре/языке попробуем угадать)
+      const mapKey = (k)=>{
+        const s = String(k).trim().toLowerCase();
+        if(/катег/i.test(s) || /category/.test(s)) return 'category';
+        if(/наимен/.test(s) || /name/.test(s)) return 'name';
+        if(/ед/.test(s) || /unit/.test(s)) return 'unit';
+        if(/цен/.test(s) || /price/.test(s)) return 'price';
+        if(/примеч/.test(s) || /note/.test(s)) return 'note';
+        return s;
+      };
+      const rows = json.map(row=>{
+        const obj={};
+        for(const k in row){ obj[mapKey(k)] = row[k]; }
+        obj.price = obj.price ? String(obj.price).replace(/\s+/g,'').replace(',','.') : '';
+        return obj;
+      }).filter(x=>x.name);
+      data = rows;
+      populateCats(data);
+      render();
+      fileInput.value = '';
+    });
+
+    // ====== Слушатели ======
+    q.addEventListener('input', render);
+    cat.addEventListener('change', render);
+    resetBtn.addEventListener('click', ()=>{ q.value=''; cat.value=''; render(); });
+
+    // ====== init ======
+    populateCats(data);
+    render();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
